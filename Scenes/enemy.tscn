@@ -1,0 +1,111 @@
+[gd_scene load_steps=10 format=3 uid="uid://wuc1xjw0b537"]
+
+[ext_resource type="Script" path="res://Script/Enemy.cs" id="1_4qvi8"]
+[ext_resource type="Texture2D" uid="uid://cmpngyfdvfhch" path="res://Assets/Imports/sprites/slime_green.png" id="1_30f78"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7bv0p"]
+size = Vector2(10, 12)
+
+[sub_resource type="Animation" id="Animation_ooiou"]
+resource_name = "Walk"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_d8r1o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_a52e1"]
+resource_name = "Kill"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gxw7a"]
+_data = {
+"Kill": SubResource("Animation_a52e1"),
+"RESET": SubResource("Animation_d8r1o"),
+"Walk": SubResource("Animation_ooiou")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lie3"]
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_716pj"]
+size = Vector2(10, 1)
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("_BodyEnemy", "_AnimationEnemy", "_RayCastEnemy")]
+script = ExtResource("1_4qvi8")
+_BodyEnemy = NodePath("Body")
+_AnimationEnemy = NodePath("AnimationPlayer")
+_RayCastEnemy = NodePath("RayCast2D")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("1_30f78")
+hframes = 4
+vframes = 3
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_7bv0p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gxw7a")
+}
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 6)
+target_position = Vector2(10, 0)
+
+[node name="Area2D_Kill" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Kill"]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_5lie3")
+
+[node name="Area2D_Death" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Death"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_716pj")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="Area2D_Kill" to="." method="_on_area_2d_kill_body_entered"]
+[connection signal="body_entered" from="Area2D_Death" to="." method="_on_area_2d_death_body_entered"]
