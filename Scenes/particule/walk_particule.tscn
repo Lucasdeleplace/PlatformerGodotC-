@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2l1ejaym022v"]
+
+[ext_resource type="Texture2D" uid="uid://bppfr8g510y3w" path="res://Assets/Imports/Particule_seed_exe/walk.png" id="1_ggcqs"]
+
+[sub_resource type="Gradient" id="Gradient_3i5pt"]
+colors = PackedColorArray(0, 0.243137, 0, 1, 0, 1, 0, 0)
+
+[node name="Walk_Particule" type="CPUParticles2D"]
+amount = 96
+lifetime = 3.0
+randomness = 1.0
+lifetime_randomness = 0.3
+texture = ExtResource("1_ggcqs")
+emission_shape = 1
+emission_sphere_radius = 2.0
+gravity = Vector2(0, -10)
+angular_velocity_max = 50.0
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_3i5pt")

@@ -7,6 +7,8 @@ public partial class Player : CharacterBody2D
     [Export] public Sprite2D Sprite;
 	[Export] public PointLight2D Torche;
     [Export] public float Speed = 200.0f;
+    [Export] public CpuParticles2D JumpParticles;
+    [Export] public CpuParticles2D WalkParticles;
 
     public override void _PhysicsProcess(double delta)
     {
@@ -22,6 +24,7 @@ public partial class Player : CharacterBody2D
         if (Input.IsActionJustPressed("jump") && IsOnFloor())
         {
             velocity.Y = JumpVelocity;
+            JumpParticles.Emitting = true;
         }
 
         // Get the input direction and handle the movement/deceleration.
@@ -44,16 +47,19 @@ public partial class Player : CharacterBody2D
     {
         if (dir.X == 1)
         {
+            WalkParticles.Emitting = true;
             Sprite.FlipH = false;
 			AnimationPlayer.Play("Walk");
 		} 
 		else if (dir.X == -1)
 		{
+            WalkParticles.Emitting = true;
             Sprite.FlipH = true;
 			AnimationPlayer.Play("Walk");
         } 
         else
         {
+            WalkParticles.Emitting = false;
             AnimationPlayer.Play("Idle");
         }
     }

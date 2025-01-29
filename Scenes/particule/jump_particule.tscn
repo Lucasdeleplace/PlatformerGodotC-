@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0fcguddlmqub"]
+
+[ext_resource type="Texture2D" uid="uid://bl3dl3lhexqi0" path="res://Assets/Imports/Particule_seed_exe/jump.png" id="1_mksyr"]
+
+[sub_resource type="Gradient" id="Gradient_ay7nv"]
+offsets = PackedFloat32Array(0, 0.530488, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="JumpParticule" type="CPUParticles2D"]
+emitting = false
+amount = 1
+lifetime = 0.5
+one_shot = true
+texture = ExtResource("1_mksyr")
+gravity = Vector2(0, 100)
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+scale_amount_min = 0.5
+color_ramp = SubResource("Gradient_ay7nv")

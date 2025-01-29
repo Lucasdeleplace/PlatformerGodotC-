@@ -9,7 +9,7 @@ public partial class Enemy : CharacterBody2D
 	[Export] private RayCast2D _RayCastEnemy;
 	[Export] private bool _Special = false;
 	[Export] private Color _Special_Color;
-	[Export] public float JumpVelocity = -1000.0f;
+	[Export] public float JumpVelocity = -200.0f;
 
 	public override void _Ready()
 	{

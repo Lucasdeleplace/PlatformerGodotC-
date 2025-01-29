@@ -9,12 +9,12 @@ public partial class Ui : CanvasLayer
 
 	public override void _Ready()
 	{
-		CoinLabel.Text = "X " + currentCoins.ToString();
+		CoinLabel.Text = "X " + currentCoins.ToString() + "/" + 10;
 	}
 
 	public void AddCoins(int amount)
 	{
 		currentCoins += amount;
-		CoinLabel.Text = "X " + currentCoins.ToString();
+		CoinLabel.Text = "X " + currentCoins.ToString() + "/" + 10;
 	}
 }
