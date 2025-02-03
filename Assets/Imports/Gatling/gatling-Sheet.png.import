@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxnmbxhbjcjt8"
-path="res://.godot/imported/light.png-2a7c25d2528b528b4775521a146eeb11.ctex"
+uid="uid://fnwtum740va0"
+path="res://.godot/imported/gatling-Sheet.png-c0950e0ff507cbd76623c6d805118ebd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/light.png"
-dest_files=["res://.godot/imported/light.png-2a7c25d2528b528b4775521a146eeb11.ctex"]
+source_file="res://Assets/Imports/Gatling/gatling-Sheet.png"
+dest_files=["res://.godot/imported/gatling-Sheet.png-c0950e0ff507cbd76623c6d805118ebd.ctex"]
 
 [params]
 

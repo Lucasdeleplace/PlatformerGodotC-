@@ -1,18 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://qkck3t6qhtn1"]
+[gd_scene load_steps=13 format=3 uid="uid://qkck3t6qhtn1"]
 
 [ext_resource type="Script" path="res://Script/Player.cs" id="1_tmmhg"]
 [ext_resource type="Texture2D" uid="uid://b3atrspny48vl" path="res://Assets/Imports/sprites/knight.png" id="2_4ewdr"]
-[ext_resource type="Texture2D" uid="uid://dxnmbxhbjcjt8" path="res://Assets/light.png" id="3_qxyh0"]
+[ext_resource type="PackedScene" uid="uid://cv373nbhn0jx0" path="res://Scenes/gatling.tscn" id="3_abihv"]
+[ext_resource type="PackedScene" uid="uid://drrjhvyjaxjk4" path="res://Scenes/Bullet.tscn" id="4_575ob"]
 [ext_resource type="PackedScene" uid="uid://d2l1ejaym022v" path="res://Scenes/particule/walk_particule.tscn" id="4_ukeqe"]
 [ext_resource type="PackedScene" uid="uid://b0fcguddlmqub" path="res://Scenes/particule/jump_particule.tscn" id="4_yw0p4"]
+[ext_resource type="Texture2D" uid="uid://dxnmbxhbjcjt8" path="res://Assets/Imports/Light/light.png" id="5_a263y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1esfn"]
 size = Vector2(10, 15)
 
 [sub_resource type="Animation" id="Animation_akpx7"]
 resource_name = "Idle"
-length = 0.4
+length = 0.31
 loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -86,11 +89,17 @@ hframes = 8
 vframes = 8
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(2, 2)
 limit_left = -350
+limit_top = -1135
 limit_right = 1872
 limit_bottom = 575
 position_smoothing_enabled = true
+
+[node name="Gatling" parent="." instance=ExtResource("3_abihv")]
+position = Vector2(1, -4)
+scale = Vector2(7.88647, 7.51852)
+BulletScene = ExtResource("4_575ob")
 
 [node name="PARAMETER" type="Node" parent="."]
 
@@ -106,7 +115,7 @@ visible = false
 shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 2.0
-texture = ExtResource("3_qxyh0")
+texture = ExtResource("5_a263y")
 
 [node name="Particule_grp" type="Node2D" parent="."]
 

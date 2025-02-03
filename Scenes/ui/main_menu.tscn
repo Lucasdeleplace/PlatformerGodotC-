@@ -42,12 +42,16 @@ layer_1/tile_data = PackedInt32Array(1245182, 0, 0, 1245183, 0, 0, 1179648, 0, 0
 [node name="Player" parent="." instance=ExtResource("2_7s8vu")]
 position = Vector2(232, 445)
 scale = Vector2(2, 2)
+DashDuration = 0.4
+DashCooldownDuration = 2.0
 
 [node name="Menu" type="Control" parent="." node_paths=PackedStringArray("_Marker", "_Character")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 7.0
+offset_right = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_pssi8")
@@ -163,13 +167,16 @@ grow_vertical = 2
 text = "QUIT"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 394.0
-offset_top = 154.0
-offset_right = 740.0
-offset_bottom = 203.0
+offset_left = 426.0
+offset_top = 28.0
+offset_right = 820.0
+offset_bottom = 82.0
+scale = Vector2(0.87859, 1.06106)
 theme_override_fonts/font = ExtResource("8_0eboh")
-text = "Up, Down, Left, Right = Move
-Space = Jump"
+text = "Up, Left, Right = Move / Jump
+CTRL ou Clic-Gauche = Shoot
+Shift = Dash
+"
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(570, 313)

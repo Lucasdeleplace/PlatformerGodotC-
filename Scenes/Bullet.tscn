@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://drrjhvyjaxjk4"]
+
+[ext_resource type="Script" path="res://Script/Bullet.cs" id="1_8r126"]
+[ext_resource type="Texture2D" uid="uid://bppfr8g510y3w" path="res://Assets/Imports/Particule_seed_exe/walk.png" id="2_b0uk7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tusom"]
+radius = 5.09902
+
+[node name="Bullet" type="Area2D" node_paths=PackedStringArray("_RayCastLeft", "_RayCastRight")]
+position = Vector2(1, -10)
+script = ExtResource("1_8r126")
+_RayCastLeft = NodePath("RayCastLeft")
+_RayCastRight = NodePath("RayCastRight")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.938937, 0.252035, 3.85046e-07, 1)
+position = Vector2(0, 1)
+scale = Vector2(1.22536, 1.25157)
+texture = ExtResource("2_b0uk7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.15476, 1.125)
+shape = SubResource("CircleShape2D_tusom")
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+rotation = -3.13544
+target_position = Vector2(23.9995, -0.14766)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(24, 0)
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]

@@ -7,7 +7,7 @@ public partial class Menu : Control
 	[Export] private Color opacity = new Color(1, 1, 1, 0);
 	public void _on_button_play_pressed()
 	{
-		GetTree().ChangeSceneToFile("res://Scenes/World_A_1.tscn");
+		GetTree().ChangeSceneToFile("res://Scenes/Hub.tscn");
 	}
 	public void _on_button_option_pressed()
 	{

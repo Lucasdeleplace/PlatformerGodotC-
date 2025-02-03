@@ -4,9 +4,11 @@
 [ext_resource type="Script" path="res://Script/ui/Ui.cs" id="1_umki3"]
 [ext_resource type="FontFile" uid="uid://bwpdme01xsc1a" path="res://Assets/Imports/fonts/PixelOperator8.ttf" id="3_f3e2o"]
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("CoinLabel")]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("CoinLabel", "_timeLabel", "_bestTimeLabel")]
 script = ExtResource("1_umki3")
 CoinLabel = NodePath("Label_Coins")
+_timeLabel = NodePath("Timer/Time")
+_bestTimeLabel = NodePath("Timer/BestTime")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(16, 16)
@@ -22,3 +24,19 @@ offset_bottom = 32.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_f3e2o")
 text = "ERREUR"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Time" type="Label" parent="Timer"]
+offset_left = 8.0
+offset_top = 34.0
+offset_right = 48.0
+offset_bottom = 57.0
+
+[node name="BestTime" type="Label" parent="Timer"]
+offset_left = 8.0
+offset_top = 68.0
+offset_right = 48.0
+offset_bottom = 91.0
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]
