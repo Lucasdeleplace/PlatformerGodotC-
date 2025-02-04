@@ -32,10 +32,8 @@ public partial class Ui : CanvasLayer
     public void StopTimer()
     {
         _timer.Stop();
-        GD.Print("Time: " + _elapsedTime);
         if (_elapsedTime < GlobalData.Instance.BestTime)
         {
-            GD.Print("Best Time: " + _elapsedTime);
             GlobalData.Instance.BestTime = _elapsedTime;
             _bestTimeLabel.Text = "Best Time: " + GlobalData.Instance.BestTime.ToString("F1");
         }

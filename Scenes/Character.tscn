@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://qkck3t6qhtn1"]
+[gd_scene load_steps=17 format=3 uid="uid://qkck3t6qhtn1"]
 
 [ext_resource type="Script" path="res://Script/Player.cs" id="1_tmmhg"]
 [ext_resource type="Texture2D" uid="uid://b3atrspny48vl" path="res://Assets/Imports/sprites/knight.png" id="2_4ewdr"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://d2l1ejaym022v" path="res://Scenes/particule/walk_particule.tscn" id="4_ukeqe"]
 [ext_resource type="PackedScene" uid="uid://b0fcguddlmqub" path="res://Scenes/particule/jump_particule.tscn" id="4_yw0p4"]
 [ext_resource type="Texture2D" uid="uid://dxnmbxhbjcjt8" path="res://Assets/Imports/Light/light.png" id="5_a263y"]
+[ext_resource type="AudioStream" uid="uid://c0cdbpo1pduhr" path="res://Assets/Imports/sounds/jump.wav" id="8_pxr13"]
+[ext_resource type="AudioStream" uid="uid://cp76e3qgbe7dr" path="res://Assets/Imports/sounds/walk.mp3" id="9_4wv4v"]
+[ext_resource type="AudioStream" uid="uid://ymcys3l1crkd" path="res://Assets/Imports/sounds/hurt.wav" id="10_pv168"]
+[ext_resource type="AudioStream" uid="uid://virkfe0x0v4u" path="res://Assets/Imports/sounds/dash.wav" id="11_1jt24"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1esfn"]
 size = Vector2(10, 15)
@@ -68,7 +72,7 @@ _data = {
 "Walk": SubResource("Animation_d1atb")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("AnimationPlayer", "Sprite", "Torche", "JumpParticles", "WalkParticles")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("AnimationPlayer", "Sprite", "Torche", "JumpParticles", "WalkParticles", "JumpSound", "WalkSound", "DieSound", "DashSound")]
 z_index = 1
 script = ExtResource("1_tmmhg")
 AnimationPlayer = NodePath("PARAMETER/ANIMATION/AnimationPlayer")
@@ -77,6 +81,10 @@ Torche = NodePath("PointLight2D")
 Speed = 150.0
 JumpParticles = NodePath("Particule_grp/JumpParticule")
 WalkParticles = NodePath("Particule_grp/WalkParticule")
+JumpSound = NodePath("sfx_jump")
+WalkSound = NodePath("sfx_walk")
+DieSound = NodePath("sfx_die")
+DashSound = NodePath("sfx_dash")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6.5)
@@ -90,7 +98,7 @@ vframes = 8
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
-limit_left = -350
+limit_left = -345
 limit_top = -1135
 limit_right = 1872
 limit_bottom = 575
@@ -123,3 +131,20 @@ texture = ExtResource("5_a263y")
 emitting = false
 
 [node name="JumpParticule" parent="Particule_grp" instance=ExtResource("4_yw0p4")]
+
+[node name="sfx_jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_pxr13")
+volume_db = -16.0
+
+[node name="sfx_walk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_4wv4v")
+volume_db = -16.0
+autoplay = true
+
+[node name="sfx_die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_pv168")
+volume_db = -16.0
+
+[node name="sfx_dash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_1jt24")
+volume_db = -16.0

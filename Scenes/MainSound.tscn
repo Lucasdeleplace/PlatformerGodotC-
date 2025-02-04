@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7lnch26x1gpb"]
+
+[ext_resource type="AudioStream" uid="uid://c1vvo6ls8rnok" path="res://Assets/Imports/music/action-time-289735.mp3" id="1_fwk4h"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_fwk4h")
+volume_db = -18.0
+autoplay = true

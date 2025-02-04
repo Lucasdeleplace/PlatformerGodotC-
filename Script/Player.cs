@@ -11,6 +11,11 @@ public partial class Player : CharacterBody2D
     [Export] public float DashSpeed = 600.0f;
     [Export] public float DashDuration = 0.2f;
     [Export] public int MaxJumps = 1;
+    [Export] public AudioStreamPlayer JumpSound;
+    [Export] public AudioStreamPlayer WalkSound;
+    [Export] public AudioStreamPlayer DieSound;
+    [Export] public AudioStreamPlayer DashSound;
+
 
     private bool _isDashing = false;
     private float _dashTime = 0.0f;
@@ -45,6 +50,8 @@ public partial class Player : CharacterBody2D
             // Handle Jump.
             if (Input.IsActionJustPressed("jump") && _jumpsLeft > 0)
             {
+                
+                JumpSound.Play();
                 velocity.Y = JumpVelocity;
                 JumpParticles.Emitting = true;
                 _jumpsLeft--;
@@ -52,6 +59,10 @@ public partial class Player : CharacterBody2D
 
             if (direction != Vector2.Zero)
             {
+                if(!WalkSound.IsPlaying()) {
+                    WalkSound.Play();
+                }
+                
                 velocity.X = direction.X * Speed;
             }
             else
@@ -62,6 +73,7 @@ public partial class Player : CharacterBody2D
             // Handle Dash.
             if (Input.IsActionJustPressed("dash") && _dashCooldown <= 0)
             {
+                DashSound.Play();
                 StartDash(direction);
             }
         }
@@ -144,4 +156,5 @@ public partial class Player : CharacterBody2D
             Torche.Visible = !Torche.Visible;
         }
     }
+    
 }

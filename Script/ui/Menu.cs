@@ -4,9 +4,11 @@ public partial class Menu : Control
 {
 	[Export] private Marker2D _Marker;
 	[Export] private CharacterBody2D _Character;
+	[Export] private AudioStreamPlayer _AudioStartGame;
 	[Export] private Color opacity = new Color(1, 1, 1, 0);
 	public void _on_button_play_pressed()
 	{
+		_AudioStartGame.Play();
 		GetTree().ChangeSceneToFile("res://Scenes/Hub.tscn");
 	}
 	public void _on_button_option_pressed()

@@ -26,21 +26,16 @@ DashCooldownDuration = 2.0
 
 [node name="Camera2D" parent="Player" index="2"]
 zoom = Vector2(1, 1)
-limit_left = -300
+limit_left = -260
+limit_top = -330
 limit_right = 950
+limit_bottom = 405
 
 [node name="Flag" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("3_2xbmp")]
 modulate = Color(0.941176, 0.145098, 0, 1)
 position = Vector2(49, 250)
 rotation = -1.57079
 _NextScene = "res://Scenes/World_A_1.tscn"
-ui = NodePath("../UI")
-
-[node name="Flag2" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("3_2xbmp")]
-modulate = Color(0.941176, 0.145098, 0, 1)
-position = Vector2(549, 276)
-rotation = -1.57079
-_NextScene = "res://Scenes/World_A_2.tscn"
 ui = NodePath("../UI")
 
 [node name="Label" type="Label" parent="."]
@@ -50,15 +45,6 @@ offset_right = 111.0
 offset_bottom = 219.0
 theme_override_fonts/font = ExtResource("5_ru52s")
 text = "World 1"
-
-[node name="Label2" type="Label" parent="."]
-offset_left = 494.0
-offset_top = 197.0
-offset_right = 596.0
-offset_bottom = 220.0
-theme_override_fonts/font = ExtResource("5_ru52s")
-text = "World 2
-"
 
 [node name="UI" parent="." instance=ExtResource("4_ssb6t")]
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cv373nbhn0jx0"]
+[gd_scene load_steps=7 format=3 uid="uid://cv373nbhn0jx0"]
 
 [ext_resource type="Script" path="res://Script/Gatling.cs" id="1_7d2of"]
 [ext_resource type="Texture2D" uid="uid://fnwtum740va0" path="res://Assets/Imports/Gatling/gatling-Sheet.png" id="2_a25r2"]
+[ext_resource type="AudioStream" uid="uid://cocjyqowju2dy" path="res://Assets/Imports/sounds/explosion.wav" id="3_020h2"]
 
 [sub_resource type="Animation" id="Animation_q1gr6"]
 length = 0.001
@@ -41,10 +42,11 @@ _data = {
 "Shoot": SubResource("Animation_0t56k")
 }
 
-[node name="Gatling" type="Node2D" node_paths=PackedStringArray("Sprite", "AnimationGun")]
+[node name="Gatling" type="Node2D" node_paths=PackedStringArray("Sprite", "AnimationGun", "ShootSound")]
 script = ExtResource("1_7d2of")
 Sprite = NodePath("Sprite2D")
 AnimationGun = NodePath("AnimationPlayer")
+ShootSound = NodePath("AudioStreamPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(7.52316e-37, 0)
@@ -59,3 +61,7 @@ gizmo_extents = 6062.5
 libraries = {
 "": SubResource("AnimationLibrary_klk3c")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_020h2")
+volume_db = -30.0

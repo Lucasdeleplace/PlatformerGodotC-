@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cefidudctpduh"]
+[gd_scene load_steps=8 format=3 uid="uid://cefidudctpduh"]
 
 [ext_resource type="Texture2D" uid="uid://bgpxcs1qubpw1" path="res://Assets/Imports/sprites/coin.png" id="1_0gfbc"]
 [ext_resource type="Script" path="res://Script/Coin.cs" id="1_5yjix"]
+[ext_resource type="AudioStream" uid="uid://cpj6oisevsrkf" path="res://Assets/Imports/sounds/coin.mp3" id="3_2r7b2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8d81h"]
 
@@ -44,9 +45,10 @@ _data = {
 "RESET": SubResource("Animation_5csqq")
 }
 
-[node name="COIN" type="Area2D" node_paths=PackedStringArray("AnimationCoin")]
+[node name="COIN" type="Area2D" node_paths=PackedStringArray("AnimationCoin", "CoinSound")]
 script = ExtResource("1_5yjix")
 AnimationCoin = NodePath("AnimationPlayer")
+CoinSound = NodePath("AudioStreamPlayer")
 
 [node name="Coin" type="Sprite2D" parent="."]
 texture = ExtResource("1_0gfbc")
@@ -60,4 +62,9 @@ libraries = {
 "": SubResource("AnimationLibrary_egxsp")
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2r7b2")
+volume_db = -16.0
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

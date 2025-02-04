@@ -7,6 +7,7 @@ public partial class Gatling : Node2D
     [Export] public float FireRate = 0.1f; // Temps entre chaque tir
 	[Export] public Sprite2D Sprite;
     [Export] public AnimationPlayer AnimationGun;
+    [Export] public AudioStreamPlayer ShootSound;
     private bool _canShoot = true;
     private Timer _fireTimer;
 
@@ -23,6 +24,7 @@ public partial class Gatling : Node2D
     {
         if (Input.IsActionPressed("shoot") && _canShoot)
         {
+            
             Shoot();
             AnimationGun.Play("Shoot");
             _canShoot = false;
@@ -37,12 +39,13 @@ public partial class Gatling : Node2D
 
    private void Shoot()
 {
+
     if (BulletScene == null)
     {
         GD.PrintErr("BulletScene non assignée !");
         return;
     }
-
+        ShootSound.Play();
     var bullet = (Bullet)BulletScene.Instantiate();
     bullet.Position = GetNode<Marker2D>("Marker2D").GlobalPosition;
 

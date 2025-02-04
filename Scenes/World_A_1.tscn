@@ -13,6 +13,7 @@
 position = Vector2(1, -1)
 
 [node name="TileMap" type="TileMap" parent="." groups=["TileMap"]]
+position = Vector2(4, 0)
 tile_set = ExtResource("1_peeve")
 format = 2
 layer_0/name = "Background"
@@ -26,7 +27,7 @@ layer_3/name = "Foliage"
 layer_3/tile_data = PackedInt32Array(-196605, 131072, 4, -131069, 131072, 5, -65533, 131072, 6, -196604, 196608, 4, -131068, 196608, 5, -65532, 196608, 6, -196603, 262144, 4, -131067, 262144, 5, -65531, 262144, 6, -131077, 131072, 4, -65541, 131072, 5, -5, 131072, 6, -131076, 196608, 4, -65540, 196608, 5, -4, 196608, 6, -131075, 262144, 4, -65539, 262144, 5, -3, 262144, 6, -196596, 131072, 4, -131060, 131072, 5, -65524, 131072, 6, -196595, 196608, 4, -131059, 196608, 5, -65523, 196608, 6, -196594, 262144, 4, -131058, 262144, 5, -65522, 262144, 6, -196588, 131072, 4, -131052, 131072, 5, -65516, 131072, 6, -196587, 196608, 4, -131051, 196608, 5, -65515, 196608, 6, -196586, 262144, 4, -131050, 262144, 5, -65514, 262144, 6, -17, 524288, 3)
 
 [node name="Player" parent="." instance=ExtResource("2_xfu1d")]
-position = Vector2(1442, -25)
+position = Vector2(72, -79)
 DashCooldownDuration = 2.0
 
 [node name="UI" parent="." instance=ExtResource("3_8uhr0")]
@@ -107,7 +108,7 @@ ui = NodePath("../UI")
 
 [node name="Flag2" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("6_wh4lh")]
 position = Vector2(1514, -33)
-_NextScene = "res://Scenes/Hub.tscn"
+_NextScene = "res://Scenes/hubFinal.tscn"
 _AmountCoinsNeeded = 10
 ui = NodePath("../UI")
 

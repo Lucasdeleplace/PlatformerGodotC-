@@ -66,6 +66,10 @@ using Godot;public partial class Enemy : CharacterBody2D
     {
         if (body is CharacterBody2D characterBody && characterBody.Name == "Player")
         {
+            if (body is Player player)
+            {
+                player.DieSound.Play();
+            }
             GetTree().CallDeferred("reload_current_scene");
         }
     }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnbu1p7srh23a"]
+[gd_scene load_steps=12 format=3 uid="uid://cnbu1p7srh23a"]
 
 [ext_resource type="TileSet" uid="uid://dgulpywxwoccb" path="res://TileMap/World.tres" id="1_fkv6c"]
 [ext_resource type="FontFile" uid="uid://bwpdme01xsc1a" path="res://Assets/Imports/fonts/PixelOperator8.ttf" id="1_p102l"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d3tn6wexkjs2a" path="res://Assets/Imports/button_seed/clicked.png" id="5_u48nd"]
 [ext_resource type="Texture2D" uid="uid://oi0mo1oj5t7s" path="res://Assets/Imports/button_seed/hovered.png" id="6_mig3m"]
 [ext_resource type="FontFile" uid="uid://cil3n278vuscv" path="res://Assets/Imports/fonts/PixelOperator8-Bold.ttf" id="8_0eboh"]
+[ext_resource type="AudioStream" uid="uid://dtuo15n0flwcs" path="res://Assets/Imports/sounds/game-start.mp3" id="9_teohp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_piugd"]
 bg_color = Color(0.313726, 0.258824, 0.294118, 1)
@@ -45,7 +46,7 @@ scale = Vector2(2, 2)
 DashDuration = 0.4
 DashCooldownDuration = 2.0
 
-[node name="Menu" type="Control" parent="." node_paths=PackedStringArray("_Marker", "_Character")]
+[node name="Menu" type="Control" parent="." node_paths=PackedStringArray("_Marker", "_Character", "_AudioStartGame")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -58,6 +59,7 @@ theme = SubResource("Theme_pssi8")
 script = ExtResource("2_jskp3")
 _Marker = NodePath("../Marker2D")
 _Character = NodePath("../Player")
+_AudioStartGame = NodePath("../sfx_Start")
 opacity = Color(1, 1, 1, 0.431373)
 
 [node name="Panel" type="Panel" parent="Menu"]
@@ -89,7 +91,7 @@ grow_vertical = 2
 [node name="Label_Titre" type="Label" parent="Menu/Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Zeldo"
+text = "ZELDO"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Menu/Panel/VBoxContainer"]
@@ -117,8 +119,7 @@ offset_right = 20.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "PLAY
-"
+text = "PLAY"
 
 [node name="TextureButton_Option" type="TextureButton" parent="Menu/Panel/VBoxContainer"]
 layout_mode = 2
@@ -167,19 +168,23 @@ grow_vertical = 2
 text = "QUIT"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 426.0
-offset_top = 28.0
-offset_right = 820.0
-offset_bottom = 82.0
+offset_left = 409.0
+offset_top = 15.0
+offset_right = 803.0
+offset_bottom = 88.0
 scale = Vector2(0.87859, 1.06106)
 theme_override_fonts/font = ExtResource("8_0eboh")
 text = "Up, Left, Right = Move / Jump
 CTRL ou Clic-Gauche = Shoot
 Shift = Dash
+T = Tourche
 "
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(570, 313)
+
+[node name="sfx_Start" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_teohp")
 
 [connection signal="pressed" from="Menu/Panel/VBoxContainer/TextureButton_Play" to="Menu" method="_on_button_play_pressed"]
 [connection signal="pressed" from="Menu/Panel/VBoxContainer/TextureButton_Option" to="Menu" method="_on_button_option_pressed"]

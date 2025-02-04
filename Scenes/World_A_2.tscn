@@ -406,8 +406,8 @@ position = Vector2(1766, -641)
 ui = NodePath("../UI")
 
 [node name="Flag2" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("7_vlfyr")]
-position = Vector2(-252, 366)
-_NextScene = "res://Scenes/Hub.tscn"
+position = Vector2(-244, 366)
+_NextScene = "res://Scenes/hubEnd.tscn"
 ui = NodePath("../UI")
 
 [node name="COIN5" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("4_vhxsb")]
